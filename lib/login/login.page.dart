@@ -45,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   Positioned(
                     left: 15.w,
-                    top: -10,
+                    top: -10.h,
                     child: Image.asset(
                       "assets/image1.png",
                       width: 180,
