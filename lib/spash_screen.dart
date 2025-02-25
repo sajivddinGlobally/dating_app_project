@@ -28,8 +28,10 @@ class _SpashScreenState extends State<SpashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
-      child: Image.asset("assets/cupid.png"),
-    ),);
+      backgroundColor: Color.fromARGB(255, 255, 237, 234),
+      body: Center(
+        child: Image.asset("assets/cupid.png"),
+      ),
+    );
   }
 }
