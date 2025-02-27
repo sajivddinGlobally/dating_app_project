@@ -1,3 +1,4 @@
+import 'package:dating_app/verification.otp/email.page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -76,6 +77,8 @@ class _NamePageState extends State<NamePage> {
             padding: EdgeInsets.only(left: 20.w, right: 20.w),
             child: TextFormField(
               decoration: InputDecoration(
+                filled: true,
+                fillColor: Color.fromARGB(255, 255, 255, 255),
                 hintText: "Name",
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(50),
@@ -99,20 +102,29 @@ class _NamePageState extends State<NamePage> {
           ),
           Padding(
             padding: EdgeInsets.only(left: 20.w, right: 20.w),
-            child: Container(
-              width: 325.w,
-              height: 56.h,
-              decoration: BoxDecoration(
-                color: Color.fromARGB(255, 255, 80, 105),
-                borderRadius: BorderRadius.circular(40),
-              ),
-              child: Center(
-                child: Text(
-                  "Continue",
-                  style: GoogleFonts.inter(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white,
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => EmailPage(),
+                    ));
+              },
+              child: Container(
+                width: 325.w,
+                height: 56.h,
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 255, 80, 105),
+                  borderRadius: BorderRadius.circular(40),
+                ),
+                child: Center(
+                  child: Text(
+                    "Continue",
+                    style: GoogleFonts.inter(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
