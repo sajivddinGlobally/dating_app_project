@@ -123,6 +123,8 @@ class _UploadphotoState extends State<Uploadphoto> {
             height: 30.h,
           ),
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
                 padding: EdgeInsets.only(left: 20.w),
@@ -136,6 +138,7 @@ class _UploadphotoState extends State<Uploadphoto> {
                     height: 216.h,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(16.r),
+                      color: Colors.white,
                     ),
                     child: GestureDetector(
                       onTap: () {
@@ -143,16 +146,155 @@ class _UploadphotoState extends State<Uploadphoto> {
                       },
                       child: Center(
                         child: image == null
-                            ? Text("Upload Image")
-                            : Image.file(image!),
+                            ? Text(
+                                "Upload Image",
+                              )
+                            : ClipRRect(
+                                borderRadius: BorderRadius.circular(16),
+                                child: Image.file(
+                                  image!,
+                                  width: 216.w,
+                                  height: 216.h,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
                       ),
                     ),
                   ),
                 ),
               ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(right: 16.w),
+                    child: DottedBorder(
+                      color: Color.fromARGB(255, 255, 80, 105),
+                      dashPattern: [6, 6],
+                      borderType: BorderType.RRect,
+                      radius: Radius.circular(16),
+                      child: Container(
+                        width: 100.w,
+                        height: 100.h,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16.r),
+                          color: Colors.white,
+                        ),
+                        child: GestureDetector(
+                          onTap: () {},
+                          child: Center(
+                            child: Container(
+                              width: 25.w,
+                              height: 25.h,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Color.fromARGB(255, 255, 80, 105),
+                              ),
+                              child: Icon(
+                                Icons.add,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(right: 16.w, top: 10.h),
+                    child: DottedBorder(
+                      color: Color.fromARGB(255, 255, 80, 105),
+                      dashPattern: [6, 6],
+                      borderType: BorderType.RRect,
+                      radius: Radius.circular(16),
+                      child: Container(
+                        width: 100.w,
+                        height: 100.h,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16.r),
+                          color: Colors.white,
+                        ),
+                        child: GestureDetector(
+                          onTap: () {},
+                          child: Center(
+                            child: Container(
+                              width: 25.w,
+                              height: 25.h,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Color.fromARGB(255, 255, 80, 105),
+                              ),
+                              child: Icon(
+                                Icons.add,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
+          Padding(
+            padding: EdgeInsets.only(left: 10.w),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                MyImage(),
+                MyImage(),
+                MyImage(),
+              ],
+            ),
+          ),
         ],
+      ),
+    );
+  }
+}
+
+class MyImage extends StatefulWidget {
+  const MyImage({super.key});
+
+  @override
+  State<MyImage> createState() => _MyImageState();
+}
+
+class _MyImageState extends State<MyImage> {
+  @override
+  Widget build(BuildContext context) {
+    return DottedBorder(
+      color: Color.fromARGB(255, 255, 80, 105),
+      dashPattern: [6, 6],
+      borderType: BorderType.RRect,
+      radius: Radius.circular(16),
+      child: Container(
+        width: 100.w,
+        height: 100.h,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16.r),
+          color: Colors.white,
+        ),
+        child: GestureDetector(
+          onTap: () {},
+          child: Center(
+            child: Container(
+              width: 25.w,
+              height: 25.h,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Color.fromARGB(255, 255, 80, 105),
+              ),
+              child: Icon(
+                Icons.add,
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
