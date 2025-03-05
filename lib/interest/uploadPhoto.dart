@@ -239,16 +239,16 @@ class _UploadphotoState extends State<Uploadphoto> {
               ),
             ],
           ),
-          Padding(
-            padding: EdgeInsets.only(left: 10.w),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                MyImage(),
-                MyImage(),
-                MyImage(),
-              ],
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(
+                width: 6.w,
+              ),
+              MyImage(),
+              MyImage(),
+              MyImage(),
+            ],
           ),
         ],
       ),
@@ -266,31 +266,34 @@ class MyImage extends StatefulWidget {
 class _MyImageState extends State<MyImage> {
   @override
   Widget build(BuildContext context) {
-    return DottedBorder(
-      color: Color.fromARGB(255, 255, 80, 105),
-      dashPattern: [6, 6],
-      borderType: BorderType.RRect,
-      radius: Radius.circular(16),
-      child: Container(
-        width: 100.w,
-        height: 100.h,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16.r),
-          color: Colors.white,
-        ),
-        child: GestureDetector(
-          onTap: () {},
-          child: Center(
-            child: Container(
-              width: 25.w,
-              height: 25.h,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Color.fromARGB(255, 255, 80, 105),
-              ),
-              child: Icon(
-                Icons.add,
-                color: Colors.white,
+    return Padding(
+      padding: EdgeInsets.only(top: 20.h, right: 8.w),
+      child: DottedBorder(
+        color: Color.fromARGB(255, 255, 80, 105),
+        dashPattern: [6, 6],
+        borderType: BorderType.RRect,
+        radius: Radius.circular(16),
+        child: Container(
+          width: 100.w,
+          height: 100.h,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16.r),
+            color: Colors.white,
+          ),
+          child: GestureDetector(
+            onTap: () {},
+            child: Center(
+              child: Container(
+                width: 25.w,
+                height: 25.h,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Color.fromARGB(255, 255, 80, 105),
+                ),
+                child: Icon(
+                  Icons.add,
+                  color: Colors.white,
+                ),
               ),
             ),
           ),
