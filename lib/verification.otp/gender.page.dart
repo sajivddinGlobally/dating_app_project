@@ -44,111 +44,113 @@ class _GenderPageState extends State<GenderPage> {
           ),
         ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: 40.h,
-          ),
-          Center(
-            child: Text(
-              "What’s Your Gender?",
-              style: GoogleFonts.inter(
-                fontSize: 24,
-                fontWeight: FontWeight.w600,
-                color: Color.fromARGB(255, 0, 0, 0),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: 40.h,
+            ),
+            Center(
+              child: Text(
+                "What’s Your Gender?",
+                style: GoogleFonts.inter(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w600,
+                  color: Color.fromARGB(255, 0, 0, 0),
+                ),
               ),
             ),
-          ),
-          SizedBox(
-            height: 14.h,
-          ),
-          Text(
-            "Tell us about your gender",
-            style: GoogleFonts.inter(
-              fontWeight: FontWeight.w400,
-              fontSize: 14,
-              color: Color.fromARGB(255, 51, 51, 51),
+            SizedBox(
+              height: 14.h,
             ),
-          ),
-          SizedBox(
-            height: 50.h,
-          ),
-          InkWell(
-            onTap: () {
-              setState(() {
-                currentIndex = 0;
-              });
-            },
-            child: MyGender(
-              color: currentIndex == 0
-                  ? Color.fromARGB(255, 255, 80, 105)
-                  : Color.fromARGB(255, 240, 228, 230),
-              iconData: Icons.male,
-              iconcolor: currentIndex == 0 ? Colors.white : Colors.black,
-              name: "Male",
-              textcolor: currentIndex == 0 ? Colors.white : Colors.black,
+            Text(
+              "Tell us about your gender",
+              style: GoogleFonts.inter(
+                fontWeight: FontWeight.w400,
+                fontSize: 14,
+                color: Color.fromARGB(255, 51, 51, 51),
+              ),
             ),
-          ),
-          SizedBox(
-            height: 40,
-          ),
-          GestureDetector(
-            onTap: () {
-              setState(() {
-                currentIndex = 1;
-              });
-            },
-            child: MyGender(
-              iconData: Icons.female,
-              iconcolor: currentIndex == 1 ? Colors.white : Colors.black,
-              color: currentIndex == 1
-                  ? Color.fromARGB(255, 255, 80, 105)
-                  : Color.fromARGB(255, 240, 228, 230),
-              name: "Female",
-              textcolor: currentIndex == 1 ? Colors.white : Colors.black,
+            SizedBox(
+              height: 50.h,
             ),
-          ),
-          SizedBox(
-            height: 15.h,
-          ),
-          Container(
-            child: Image.asset("assets/vector5.png"),
-          ),
-          SizedBox(
-            height: 30.h,
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 20.w, right: 20.w),
-            child: GestureDetector(
+            InkWell(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => LookingPage(),
-                    ));
+                setState(() {
+                  currentIndex = 0;
+                });
               },
-              child: Container(
-                width: 325.w,
-                height: 56.h,
-                decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 255, 80, 105),
-                  borderRadius: BorderRadius.circular(40),
-                ),
-                child: Center(
-                  child: Text(
-                    "Continue",
-                    style: GoogleFonts.inter(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
+              child: MyGender(
+                color: currentIndex == 0
+                    ? Color.fromARGB(255, 255, 80, 105)
+                    : Color.fromARGB(255, 240, 228, 230),
+                iconData: Icons.male,
+                iconcolor: currentIndex == 0 ? Colors.white : Colors.black,
+                name: "Male",
+                textcolor: currentIndex == 0 ? Colors.white : Colors.black,
+              ),
+            ),
+            SizedBox(
+              height: 40,
+            ),
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  currentIndex = 1;
+                });
+              },
+              child: MyGender(
+                iconData: Icons.female,
+                iconcolor: currentIndex == 1 ? Colors.white : Colors.black,
+                color: currentIndex == 1
+                    ? Color.fromARGB(255, 255, 80, 105)
+                    : Color.fromARGB(255, 240, 228, 230),
+                name: "Female",
+                textcolor: currentIndex == 1 ? Colors.white : Colors.black,
+              ),
+            ),
+            SizedBox(
+              height: 15.h,
+            ),
+            Container(
+              child: Image.asset("assets/vector5.png"),
+            ),
+            SizedBox(
+              height: 30.h,
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 20.w, right: 20.w),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => LookingPage(),
+                      ));
+                },
+                child: Container(
+                  width: 325.w,
+                  height: 56.h,
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 255, 80, 105),
+                    borderRadius: BorderRadius.circular(40),
+                  ),
+                  child: Center(
+                    child: Text(
+                      "Continue",
+                      style: GoogleFonts.inter(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

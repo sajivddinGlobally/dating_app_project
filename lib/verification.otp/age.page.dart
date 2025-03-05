@@ -14,7 +14,7 @@ class AgePage extends StatefulWidget {
 
 class _AgePageState extends State<AgePage> {
   int currentValue = 32;
-  int selectedAge = 18; // Default age
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,7 +52,7 @@ class _AgePageState extends State<AgePage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(
-              height: 50.h,
+              height: 20.h,
             ),
             Center(
               child: Text(
@@ -76,7 +76,7 @@ class _AgePageState extends State<AgePage> {
               ),
             ),
             SizedBox(
-              height: 30.h,
+              height: 25.h,
             ),
             NumberPicker(
               itemHeight: 50,
@@ -102,13 +102,13 @@ class _AgePageState extends State<AgePage> {
               },
             ),
             SizedBox(
-              height: 50.h,
+              height: 20.h,
             ),
             Container(
               child: Image.asset("assets/vector4.png"),
             ),
             SizedBox(
-              height: 30.h,
+              height: 20.h,
             ),
             Padding(
               padding: EdgeInsets.only(left: 20.w, right: 20.w),
