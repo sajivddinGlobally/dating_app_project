@@ -78,17 +78,17 @@ class _GenderPageState extends State<GenderPage> {
             InkWell(
               onTap: () {
                 setState(() {
-                  currentIndex = 0;
+                  currentIndex = 1;
                 });
               },
               child: MyGender(
-                color: currentIndex == 0
+                color: currentIndex == 1
                     ? Color.fromARGB(255, 255, 80, 105)
                     : Color.fromARGB(255, 240, 228, 230),
                 iconData: Icons.male,
-                iconcolor: currentIndex == 0 ? Colors.white : Colors.black,
+                iconcolor: currentIndex == 1 ? Colors.white : Colors.black,
                 name: "Male",
-                textcolor: currentIndex == 0 ? Colors.white : Colors.black,
+                textcolor: currentIndex == 1 ? Colors.white : Colors.black,
               ),
             ),
             SizedBox(
@@ -97,17 +97,17 @@ class _GenderPageState extends State<GenderPage> {
             GestureDetector(
               onTap: () {
                 setState(() {
-                  currentIndex = 1;
+                  currentIndex = 2;
                 });
               },
               child: MyGender(
                 iconData: Icons.female,
-                iconcolor: currentIndex == 1 ? Colors.white : Colors.black,
-                color: currentIndex == 1
+                iconcolor: currentIndex == 2 ? Colors.white : Colors.black,
+                color: currentIndex == 2
                     ? Color.fromARGB(255, 255, 80, 105)
                     : Color.fromARGB(255, 240, 228, 230),
                 name: "Female",
-                textcolor: currentIndex == 1 ? Colors.white : Colors.black,
+                textcolor: currentIndex == 2 ? Colors.white : Colors.black,
               ),
             ),
             SizedBox(
