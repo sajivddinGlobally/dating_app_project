@@ -11,7 +11,24 @@ class InterestPage extends StatefulWidget {
 }
 
 class _InterestPageState extends State<InterestPage> {
-  int Index = 0;
+  Set<String> selectedOptions = {};
+  List<String> interested = [
+    "Reading",
+    "Photography",
+    "Gaming",
+    "Music",
+    "Travel",
+    "Painting",
+    "Politics",
+    "Charity",
+    "Cooking",
+    "Pets",
+    "Sports",
+    "Fashion"
+  ];
+
+  Set<String> selectinterested = {}; // Store selected items
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,246 +92,49 @@ class _InterestPageState extends State<InterestPage> {
           SizedBox(
             height: 30.h,
           ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              InkWell(
-                onTap: () {
-                  setState(() {
-                    Index = 1;
-                  });
+          Padding(
+            padding: EdgeInsets.only(left: 20.w, right: 20.w),
+            child: Wrap(
+              spacing: 10,
+              runSpacing: 10,
+              children: interested.map(
+                (filter) {
+                  final isSelected = selectinterested.contains(filter);
+                  return FilterChip(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50.r),
+                      side: BorderSide.none,
+                    ),
+                    label: Text(
+                      filter,
+                      style: TextStyle(
+                        color: isSelected ? Colors.white : Colors.black,
+                      ),
+                    ),
+                    avatar: Image.asset(
+                      "assets/book.png",
+                      color: isSelected
+                          ? Colors.white
+                          : Color.fromARGB(255, 255, 80, 105),
+                    ),
+                    showCheckmark: false,
+                    disabledColor: Colors.white,
+                    selectedColor: Color.fromARGB(255, 255, 80, 105),
+                    selected: selectinterested.contains(filter),
+                    onSelected: (isSelected) {
+                      setState(() {
+                        if (isSelected) {
+                          selectinterested.add(filter);
+                        } else {
+                          setState(() {
+                            selectinterested.remove(filter);
+                          });
+                        }
+                      });
+                    },
+                  );
                 },
-                child: ChoiceChip(
-                  image: "assets/book.png",
-                  imagecolor: Index == 1
-                      ? Color.fromARGB(255, 255, 80, 105)
-                      : Colors.white,
-                  text: "Reading",
-                  textcolor: Index == 1 ? Colors.black : Colors.white,
-                  color: Index == 1
-                      ? Colors.white
-                      : Color.fromARGB(255, 255, 80, 105),
-                ),
-              ),
-              SizedBox(
-                width: 10.w,
-              ),
-              ChoiceChip(
-                image: "assets/photography.png",
-                imagecolor: Index == 2
-                    ? Colors.white
-                    : Color.fromARGB(255, 255, 80, 105),
-                text: "Photography",
-                textcolor: Index == 2 ? Colors.white : Colors.black,
-                color: Index == 2
-                    ? Color.fromARGB(255, 255, 80, 105)
-                    : Colors.white,
-              ),
-            ],
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 20.h),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        Index = 3;
-                      });
-                    },
-                    child: ChoiceChip(
-                      image: "assets/gaming.png",
-                      imagecolor: Index == 3
-                          ? Colors.white
-                          : Color.fromARGB(255, 255, 80, 105),
-                      text: "Gaming",
-                      textcolor: Index == 3 ? Colors.white : Colors.black,
-                      color: Index == 3
-                          ? Color.fromARGB(255, 255, 80, 105)
-                          : Colors.white,
-                    ),
-                  ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        Index = 4;
-                      });
-                    },
-                    child: ChoiceChip(
-                      image: "assets/music.png",
-                      imagecolor: Index == 4
-                          ? Colors.white
-                          : Color.fromARGB(255, 255, 80, 105),
-                      text: "Music",
-                      textcolor: Index == 4 ? Colors.white : Colors.black,
-                      color: Index == 4
-                          ? Color.fromARGB(255, 255, 80, 105)
-                          : Colors.white,
-                    ),
-                  ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        Index = 5;
-                      });
-                    },
-                    child: ChoiceChip(
-                      image: "assets/travale.png",
-                      imagecolor: Index == 5
-                          ? Colors.white
-                          : Color.fromARGB(255, 255, 80, 105),
-                      text: "Travel",
-                      textcolor: Index == 5 ? Colors.white : Colors.black,
-                      color: Index == 5
-                          ? Color.fromARGB(255, 255, 80, 105)
-                          : Colors.white,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 20.h),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      Index = 6;
-                    });
-                  },
-                  child: ChoiceChip(
-                    image: "assets/painting.png",
-                    imagecolor: Index == 6
-                        ? Colors.white
-                        : Color.fromARGB(255, 255, 80, 105),
-                    text: "Painting",
-                    textcolor: Index == 6 ? Colors.white : Colors.black,
-                    color: Index == 6
-                        ? Color.fromARGB(255, 255, 80, 105)
-                        : Colors.white,
-                  ),
-                ),
-                SizedBox(
-                  width: 10.w,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      Index = 7;
-                    });
-                  },
-                  child: ChoiceChip(
-                    image: "assets/politic.png",
-                    imagecolor: Index == 7
-                        ? Colors.white
-                        : Color.fromARGB(255, 255, 80, 105),
-                    text: "Politics",
-                    textcolor: Index == 7 ? Colors.white : Colors.black,
-                    color: Index == 7
-                        ? Color.fromARGB(255, 255, 80, 105)
-                        : Colors.white,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 20.h),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      Index = 8;
-                    });
-                  },
-                  child: ChoiceChip(
-                    image: "assets/charity.png",
-                    imagecolor: Index == 8
-                        ? Colors.white
-                        : Color.fromARGB(255, 255, 80, 105),
-                    text: "Charity",
-                    textcolor: Index == 8 ? Colors.white : Colors.black,
-                    color: Index == 8
-                        ? Color.fromARGB(255, 255, 80, 105)
-                        : Colors.white,
-                  ),
-                ),
-                SizedBox(
-                  width: 10.w,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      Index = 9;
-                    });
-                  },
-                  child: ChoiceChip(
-                    image: "assets/cooking.png",
-                    imagecolor: Index == 9
-                        ? Colors.white
-                        : Color.fromARGB(255, 255, 80, 105),
-                    text: "Cooking",
-                    textcolor: Index == 9 ? Colors.white : Colors.black,
-                    color: Index == 9
-                        ? Color.fromARGB(255, 255, 80, 105)
-                        : Colors.white,
-                  ),
-                ),
-                SizedBox(
-                  width: 10.w,
-                ),
-                ChoiceChip(
-                  image: "assets/pets.png",
-                  imagecolor: Color.fromARGB(255, 255, 80, 105),
-                  text: "Pets",
-                  textcolor: Colors.black,
-                  color: Colors.white,
-                ),
-              ],
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 20.h),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ChoiceChip(
-                  image: "assets/sports.png",
-                  imagecolor: Colors.white,
-                  text: "Sports",
-                  textcolor: Colors.white,
-                  color: Color.fromARGB(255, 255, 80, 105),
-                ),
-                SizedBox(
-                  width: 10.w,
-                ),
-                ChoiceChip(
-                  image: "assets/fashion.png",
-                  imagecolor: Color.fromARGB(255, 255, 80, 105),
-                  text: "Fashion",
-                  textcolor: Colors.black,
-                  color: Colors.white,
-                ),
-              ],
+              ).toList(),
             ),
           ),
           SizedBox(

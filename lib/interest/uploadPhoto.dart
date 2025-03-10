@@ -250,6 +250,7 @@ class _UploadphotoState extends State<Uploadphoto> {
               MyImage(),
             ],
           ),
+          
         ],
       ),
     );
@@ -264,6 +265,50 @@ class MyImage extends StatefulWidget {
 }
 
 class _MyImageState extends State<MyImage> {
+  File? image;
+  final picker = ImagePicker();
+  Future getImageFromGallery() async {
+    final PickedFile = await picker.pickImage(source: ImageSource.gallery);
+    setState(() {
+      if (PickedFile != null) {
+        image = File(PickedFile.path);
+      }
+    });
+  }
+
+  Future getImageFromCamera() async {
+    final PickedFile = await picker.pickImage(source: ImageSource.camera);
+    setState(() {
+      if (PickedFile != null) {
+        image = File(PickedFile.path);
+      }
+    });
+  }
+
+  Future showOptions() async {
+    showCupertinoModalPopup(
+      context: context,
+      builder: (context) => CupertinoActionSheet(
+        actions: [
+          CupertinoActionSheetAction(
+            onPressed: () {
+              Navigator.pop(context);
+              getImageFromGallery();
+            },
+            child: Text("Gallery"),
+          ),
+          CupertinoActionSheetAction(
+            onPressed: () {
+              Navigator.pop(context);
+              getImageFromCamera();
+            },
+            child: Text("Camera"),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -281,21 +326,32 @@ class _MyImageState extends State<MyImage> {
             color: Colors.white,
           ),
           child: GestureDetector(
-            onTap: () {},
-            child: Center(
-              child: Container(
-                width: 25.w,
-                height: 25.h,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Color.fromARGB(255, 255, 80, 105),
-                ),
-                child: Icon(
-                  Icons.add,
-                  color: Colors.white,
-                ),
-              ),
-            ),
+            onTap: () {
+              showOptions();
+            },
+            child: image == null
+                ? Center(
+                    child: Container(
+                        width: 25.w,
+                        height: 25.h,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Color.fromARGB(255, 255, 80, 105),
+                        ),
+                        child: Icon(
+                          Icons.add,
+                          color: Colors.white,
+                        )),
+                  )
+                : ClipRRect(
+                    borderRadius: BorderRadius.circular(16.r),
+                    child: Image.file(
+                      image!,
+                      width: 100.w,
+                      height: 100.h,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
           ),
         ),
       ),
