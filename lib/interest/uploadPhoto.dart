@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:dating_app/interest/location.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -91,167 +92,225 @@ class _UploadphotoState extends State<Uploadphoto> {
           ),
         ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: 30.h,
-          ),
-          Center(
-            child: Text(
-              "Upload your photo",
-              style: GoogleFonts.inter(
-                fontSize: 24,
-                fontWeight: FontWeight.w600,
-                color: Color.fromARGB(255, 0, 0, 0),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: 30.h,
+            ),
+            Center(
+              child: Text(
+                "Upload your photo",
+                style: GoogleFonts.inter(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w600,
+                  color: Color.fromARGB(255, 0, 0, 0),
+                ),
               ),
             ),
-          ),
-          SizedBox(
-            height: 14.h,
-          ),
-          Text(
-            textAlign: TextAlign.center,
-            "We'd love to see you. Upload a photo for your dating journey.",
-            style: GoogleFonts.inter(
-              fontWeight: FontWeight.w400,
-              fontSize: 14,
-              color: Color.fromARGB(255, 51, 51, 51),
+            SizedBox(
+              height: 14.h,
             ),
-          ),
-          SizedBox(
-            height: 30.h,
-          ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Padding(
-                padding: EdgeInsets.only(left: 20.w),
-                child: DottedBorder(
-                  color: Colors.black,
-                  dashPattern: [6, 6],
-                  borderType: BorderType.RRect,
-                  radius: Radius.circular(16),
-                  child: Container(
-                    width: 216.w,
-                    height: 216.h,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16.r),
-                      color: Colors.white,
-                    ),
-                    child: GestureDetector(
-                      onTap: () {
-                        showOptions();
-                      },
-                      child: Center(
-                        child: image == null
-                            ? Text(
-                                "Upload Image",
-                              )
-                            : ClipRRect(
-                                borderRadius: BorderRadius.circular(16),
-                                child: Image.file(
-                                  image!,
-                                  width: 216.w,
-                                  height: 216.h,
-                                  fit: BoxFit.cover,
+            Text(
+              textAlign: TextAlign.center,
+              "We'd love to see you. Upload a photo for your dating journey.",
+              style: GoogleFonts.inter(
+                fontWeight: FontWeight.w400,
+                fontSize: 14,
+                color: Color.fromARGB(255, 51, 51, 51),
+              ),
+            ),
+            SizedBox(
+              height: 30.h,
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(left: 20.w),
+                  child: DottedBorder(
+                    color: Colors.black,
+                    dashPattern: [6, 6],
+                    borderType: BorderType.RRect,
+                    radius: Radius.circular(16),
+                    child: Container(
+                      width: 216.w,
+                      height: 216.h,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16.r),
+                        color: Colors.white,
+                      ),
+                      child: GestureDetector(
+                        onTap: () {
+                          showOptions();
+                        },
+                        child: Center(
+                          child: image == null
+                              ? Text(
+                                  "Upload Image",
+                                )
+                              : ClipRRect(
+                                  borderRadius: BorderRadius.circular(16),
+                                  child: Image.file(
+                                    image!,
+                                    width: 216.w,
+                                    height: 216.h,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
-                              ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(right: 16.w),
+                      child: DottedBorder(
+                        color: Color.fromARGB(255, 255, 80, 105),
+                        dashPattern: [6, 6],
+                        borderType: BorderType.RRect,
+                        radius: Radius.circular(16),
+                        child: Container(
+                          width: 100.w,
+                          height: 100.h,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16.r),
+                            color: Colors.white,
+                          ),
+                          child: GestureDetector(
+                            onTap: () {
+                              showOptions();
+                            },
+                            child: image == null
+                                ? Center(
+                                    child: Container(
+                                      width: 25.w,
+                                      height: 25.h,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color:
+                                            Color.fromARGB(255, 255, 80, 105),
+                                      ),
+                                      child: Icon(
+                                        Icons.add,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  )
+                                : Image.file(
+                                    image!,
+                                    width: 100.w,
+                                    height: 100.h,
+                                    fit: BoxFit.cover,
+                                  ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(right: 16.w, top: 10.h),
+                      child: DottedBorder(
+                        color: Color.fromARGB(255, 255, 80, 105),
+                        dashPattern: [6, 6],
+                        borderType: BorderType.RRect,
+                        radius: Radius.circular(16),
+                        child: Container(
+                          width: 100.w,
+                          height: 100.h,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16.r),
+                            color: Colors.white,
+                          ),
+                          child: GestureDetector(
+                            onTap: () {
+                              showOptions();
+                            },
+                            child: image == null
+                                ? Center(
+                                    child: Container(
+                                      width: 25.w,
+                                      height: 25.h,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color:
+                                            Color.fromARGB(255, 255, 80, 105),
+                                      ),
+                                      child: Icon(
+                                        Icons.add,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  )
+                                : Image.file(
+                                    image!,
+                                    width: 100.w,
+                                    height: 100.h,
+                                    fit: BoxFit.cover,
+                                  ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SizedBox(
+                  width: 6.w,
+                ),
+                MyImage(),
+                MyImage(),
+                MyImage(),
+              ],
+            ),
+            SizedBox(
+              height: 50.h,
+            ),
+            Image.asset("assets/vector8.png"),
+            SizedBox(
+              height: 30.h,
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 20.w, right: 20.w),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Location(),
+                      ));
+                },
+                child: Container(
+                  width: 325.w,
+                  height: 56.h,
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 255, 80, 105),
+                    borderRadius: BorderRadius.circular(40),
+                  ),
+                  child: Center(
+                    child: Text(
+                      "Continue",
+                      style: GoogleFonts.inter(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
                       ),
                     ),
                   ),
                 ),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(right: 16.w),
-                    child: DottedBorder(
-                      color: Color.fromARGB(255, 255, 80, 105),
-                      dashPattern: [6, 6],
-                      borderType: BorderType.RRect,
-                      radius: Radius.circular(16),
-                      child: Container(
-                        width: 100.w,
-                        height: 100.h,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16.r),
-                          color: Colors.white,
-                        ),
-                        child: GestureDetector(
-                          onTap: () {},
-                          child: Center(
-                            child: Container(
-                              width: 25.w,
-                              height: 25.h,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Color.fromARGB(255, 255, 80, 105),
-                              ),
-                              child: Icon(
-                                Icons.add,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 16.w, top: 10.h),
-                    child: DottedBorder(
-                      color: Color.fromARGB(255, 255, 80, 105),
-                      dashPattern: [6, 6],
-                      borderType: BorderType.RRect,
-                      radius: Radius.circular(16),
-                      child: Container(
-                        width: 100.w,
-                        height: 100.h,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16.r),
-                          color: Colors.white,
-                        ),
-                        child: GestureDetector(
-                          onTap: () {},
-                          child: Center(
-                            child: Container(
-                              width: 25.w,
-                              height: 25.h,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Color.fromARGB(255, 255, 80, 105),
-                              ),
-                              child: Icon(
-                                Icons.add,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SizedBox(
-                width: 6.w,
-              ),
-              MyImage(),
-              MyImage(),
-              MyImage(),
-            ],
-          ),
-          
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }
