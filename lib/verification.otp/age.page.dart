@@ -13,7 +13,7 @@ class AgePage extends StatefulWidget {
 }
 
 class _AgePageState extends State<AgePage> {
-  int currentValue = 32;
+  int currentValue = 20;
 
   @override
   Widget build(BuildContext context) {
